@@ -1,0 +1,5 @@
+if(EXISTS "/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/ParticleTests[1]_tests.cmake")
+  include("/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/ParticleTests[1]_tests.cmake")
+else()
+  add_test(ParticleTests_NOT_BUILT ParticleTests_NOT_BUILT)
+endif()
