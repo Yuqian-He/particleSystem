@@ -19,6 +19,7 @@
         "memory": "cpp",
         "new": "cpp",
         "string": "cpp",
-        "__hash_table": "cpp"
+        "__hash_table": "cpp",
+        "*.ipp": "cpp"
     }
 }

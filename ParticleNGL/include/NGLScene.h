@@ -3,6 +3,8 @@
 #include <ngl/Vec3.h>
 #include "Emitter.h"
 #include<memory>
+//we will add couple of matrixs, projection&view, and every frame we reculculate camera&projection and pass in to the shader
+#include <ngl/Mat4.h>
 #include "WindowParams.h"
 // this must be included after NGL includes else we get a clash with gl libs
 #include <QOpenGLWindow>
@@ -82,6 +84,9 @@ private:
     /// position for our model
     ngl::Vec3 m_modelPos;
     std::unique_ptr<Emitter> m_emitter; //this will be the container for our emitter class
+
+    ngl::Mat4 m_view;
+    ngl::Mat4 m_project;
 
 };
 
