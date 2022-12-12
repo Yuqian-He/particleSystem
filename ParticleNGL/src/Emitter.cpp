@@ -23,10 +23,12 @@ ngl::Vec3 randomVectorOnSphere(float _radius=1)
 void Emitter::createParticle(Particle &io_p)
 {
     ngl::Vec3 emitDir(0,10.0f,0);
+
     io_p.position.set(0.0f,0.0f,0.0f);
     io_p.direction=emitDir * ngl::Random::randomPositiveNumber()+ randomVectorOnSphere()*10;//video 1:12 don't understand
     io_p.direction.m_y=std::abs(io_p.direction.m_y);//I don't know why use m_y,check ngl folder
     io_p.colour=ngl::Random::getRandomColour3();
+    io_p.lifetime=ngl::Random::getIntFromGeneratorName("particleLife");
 
 }
 
@@ -66,7 +68,7 @@ void Emitter::update()
         p.direction+=gravity*_dt*0.5f; //formula: dt_s=1/2*gravity*(dt_t)^2
         p.position+=p.direction*_dt;
         p.scale+=0.001f;
-        if(p.direction.m_y<=0.0f)
+        if(p.direction.m_y<=0.0f || --p.lifetime<=0)
         {
             createParticle(p);
         }

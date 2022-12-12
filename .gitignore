@@ -9,9 +9,9 @@
 moc/
 moc_*
 ui_*
-# shadow build directories
-build-*
 .vscode/
+# shadow build directories
+build*
 Makefile
 # Compiled Dynamic libraries
 *.so

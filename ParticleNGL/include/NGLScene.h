@@ -84,7 +84,7 @@ private:
     /// position for our model
     ngl::Vec3 m_modelPos;
     std::unique_ptr<Emitter> m_emitter; //this will be the container for our emitter class
-
+    ngl::Mat4 m_mouseGlobalTX;  
     ngl::Mat4 m_view;
     ngl::Mat4 m_project;
 

@@ -1,5 +1,0 @@
-/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/CMakeFiles/rebuild_cache.dir
-/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/CMakeFiles/edit_cache.dir
-/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/CMakeFiles/test.dir
-/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/CMakeFiles/Particle.dir
-/home/s5529663/Desktop/2022/project/particleSystem/Particle/build/CMakeFiles/ParticleTests.dir

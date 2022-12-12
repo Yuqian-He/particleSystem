@@ -7,6 +7,7 @@
 #include<ngl/ShaderLib.h>
 #include<ngl/Util.h>
 #include <iostream>
+#include<ngl/Random.h>
 
 NGLScene::NGLScene()
 {
@@ -44,6 +45,7 @@ void NGLScene::initializeGL()
   glEnable(GL_DEPTH_TEST);
   // enable multisampling for smoother drawing
   glEnable(GL_MULTISAMPLE);
+  glEnable(GL_PROGRAM_POINT_SIZE);
   m_emitter=std::make_unique<Emitter>(10000);//envoke the constructor of emitter and return a smart pointer,we don;t need to call the destructor.
   startTimer(10);//I don;t know what is it.
 
@@ -64,6 +66,8 @@ void NGLScene::initializeGL()
   ngl::ShaderLib::setUniform("MVP",m_project*m_view);
   //ngl::ShaderLib::setUniform("Colour",1.0f,0.0f,0.0f,1.0f);
 
+  auto dist=std::uniform_int_distribution<int>(10,500);
+  ngl::Random::addIntGenerator("particleLife",dist);
 
   glPointSize(2);
 }
@@ -81,6 +85,15 @@ void NGLScene::paintGL()
   // clear the screen and depth buffer
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glViewport(0,0,m_win.width,m_win.height);
+
+  auto rotX=ngl::Mat4::rotateX(m_win.spinXFace);
+  auto rotY=ngl::Mat4::rotateY(m_win.spinXFace);
+  m_mouseGlobalTX=rotX*rotY;
+  m_mouseGlobalTX.m_m[3][0]=m_modelPos.m_x;
+  m_mouseGlobalTX.m_m[3][1]=m_modelPos.m_y;
+  m_mouseGlobalTX.m_m[3][2]=m_modelPos.m_z;
+
+  ngl::ShaderLib::setUniform("MVP",m_project*m_view*m_mouseGlobalTX);
   m_emitter->render();
 
 }

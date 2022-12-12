@@ -1,6 +1,0 @@
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/rebuild_cache.dir
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/edit_cache.dir
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/ParticleNGL.dir
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/ParticleNGLCopyShaders.dir
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/ParticleNGL_autogen_timestamp_deps.dir
-/home/s5529663/Desktop/2022/project/particleSystem/ParticleNGL/build/CMakeFiles/ParticleNGL_autogen.dir
