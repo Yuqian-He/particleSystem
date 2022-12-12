@@ -16,7 +16,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -33,7 +34,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -44,6 +46,13 @@
 					"id" : "ParticleNGL::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-ParticleNGL-Debug-ee47d9da30c860f9e7cc.json",
 					"name" : "ParticleNGL",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ParticleNGLCopyShaders::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ParticleNGLCopyShaders-Debug-e02f6079d483a4b5c773.json",
+					"name" : "ParticleNGLCopyShaders",
 					"projectIndex" : 0
 				},
 				{

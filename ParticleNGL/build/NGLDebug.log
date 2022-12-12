@@ -1,49 +1,59 @@
 -------------------------------------------------------------------------------
-[08:48PM] NGL configured with 
-[08:48PM] OpenGL 4.3.0 NVIDIA 515.43.04
-[08:48PM] GLSL version 4.30 NVIDIA via Cg compiler
+[03:34PM] NGL configured with 
+[03:34PM] OpenGL 4.3.0 NVIDIA 515.43.04
+[03:34PM] GLSL version 4.30 NVIDIA via Cg compiler
 -------------------------------------------------------------------------------
-[08:48PM] creating empty ShaderProgram nglTextShader
-[08:48PM] just attached nglTextVertex to ngl::ShaderLib
-[08:48PM] just attached nglTextFragment to ngl::ShaderLib
-[08:48PM] Compiling Shader nglTextVertex
-[08:48PM] Compiling Shader nglTextFragment
-[08:48PM] nglTextVertex attached to program
-[08:48PM] nglTextFragment attached to program
-[08:48PM] Linking nglTextShader
-[08:48PM] linking Shader nglTextShader 
+[03:34PM] creating empty ShaderProgram nglTextShader
+[03:34PM] just attached nglTextVertex to ngl::ShaderLib
+[03:34PM] just attached nglTextFragment to ngl::ShaderLib
+[03:34PM] Compiling Shader nglTextVertex
+[03:34PM] Compiling Shader nglTextFragment
+[03:34PM] nglTextVertex attached to program
+[03:34PM] nglTextFragment attached to program
+[03:34PM] Linking nglTextShader
+[03:34PM] linking Shader nglTextShader 
 FOUND UNIFORM BLOCKS 0
 FOUND UNIFORM BLOCKS 0
-[08:48PM] creating empty ShaderProgram nglColourShader
-[08:48PM] just attached nglColourVertex to ngl::ShaderLib
-[08:48PM] just attached nglColourFragment to ngl::ShaderLib
-[08:48PM] Compiling Shader nglColourVertex
-[08:48PM] Compiling Shader nglColourFragment
-[08:48PM] nglColourVertex attached to program
-[08:48PM] nglColourFragment attached to program
-[08:48PM] Linking nglColourShader
-[08:48PM] linking Shader nglColourShader 
+[03:34PM] creating empty ShaderProgram nglColourShader
+[03:34PM] just attached nglColourVertex to ngl::ShaderLib
+[03:34PM] just attached nglColourFragment to ngl::ShaderLib
+[03:34PM] Compiling Shader nglColourVertex
+[03:34PM] Compiling Shader nglColourFragment
+[03:34PM] nglColourVertex attached to program
+[03:34PM] nglColourFragment attached to program
+[03:34PM] Linking nglColourShader
+[03:34PM] linking Shader nglColourShader 
 FOUND UNIFORM BLOCKS 0
 FOUND UNIFORM BLOCKS 0
-[08:48PM] creating empty ShaderProgram nglDiffuseShader
-[08:48PM] just attached nglDiffuseVertex to ngl::ShaderLib
-[08:48PM] just attached nglDiffuseFragment to ngl::ShaderLib
-[08:48PM] Compiling Shader nglDiffuseVertex
-[08:48PM] Compiling Shader nglDiffuseFragment
-[08:48PM] nglDiffuseVertex attached to program
-[08:48PM] nglDiffuseFragment attached to program
-[08:48PM] Linking nglDiffuseShader
-[08:48PM] linking Shader nglDiffuseShader 
+[03:34PM] creating empty ShaderProgram nglDiffuseShader
+[03:34PM] just attached nglDiffuseVertex to ngl::ShaderLib
+[03:34PM] just attached nglDiffuseFragment to ngl::ShaderLib
+[03:34PM] Compiling Shader nglDiffuseVertex
+[03:34PM] Compiling Shader nglDiffuseFragment
+[03:34PM] nglDiffuseVertex attached to program
+[03:34PM] nglDiffuseFragment attached to program
+[03:34PM] Linking nglDiffuseShader
+[03:34PM] linking Shader nglDiffuseShader 
 FOUND UNIFORM BLOCKS 0
 FOUND UNIFORM BLOCKS 0
-[08:48PM] creating empty ShaderProgram nglCheckerShader
-[08:48PM] just attached nglCheckerVertex to ngl::ShaderLib
-[08:48PM] just attached nglCheckerFragment to ngl::ShaderLib
-[08:48PM] Compiling Shader nglCheckerVertex
-[08:48PM] Compiling Shader nglCheckerFragment
-[08:48PM] nglCheckerVertex attached to program
-[08:48PM] nglCheckerFragment attached to program
-[08:48PM] Linking nglCheckerShader
-[08:48PM] linking Shader nglCheckerShader 
+[03:34PM] creating empty ShaderProgram nglCheckerShader
+[03:34PM] just attached nglCheckerVertex to ngl::ShaderLib
+[03:34PM] just attached nglCheckerFragment to ngl::ShaderLib
+[03:34PM] Compiling Shader nglCheckerVertex
+[03:34PM] Compiling Shader nglCheckerFragment
+[03:34PM] nglCheckerVertex attached to program
+[03:34PM] nglCheckerFragment attached to program
+[03:34PM] Linking nglCheckerShader
+[03:34PM] linking Shader nglCheckerShader 
 FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[03:34PM] creating empty ShaderProgram ParticleShader
+[03:34PM] just attached ParticleShaderVertex to ngl::ShaderLib
+[03:34PM] just attached ParticleShaderFragment to ngl::ShaderLib
+[03:34PM] Compiling Shader ParticleShaderVertex
+[03:34PM] Compiling Shader ParticleShaderFragment
+[03:34PM] ParticleShaderVertex attached to program
+[03:34PM] ParticleShaderFragment attached to program
+[03:34PM] Linking ParticleShader
+[03:34PM] linking Shader ParticleShader 
 FOUND UNIFORM BLOCKS 0

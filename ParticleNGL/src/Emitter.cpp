@@ -87,6 +87,10 @@ void Emitter::render() const
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Particle),0);
     //enable it,it tells OpenGL that the data for that attribute is present in the current vertex array object, and should be used when rendering geometry. 
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(Particle),reinterpret_cast<float *>(3*sizeof(GLfloat)));
+    glEnableVertexAttribArray(1);
+
     //kick off the shader
     glDrawArrays(GL_POINTS,0,m_particles.size());
     //disable

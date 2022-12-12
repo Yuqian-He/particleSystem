@@ -28,6 +28,9 @@ void NGLScene::resizeGL(int _w , int _h)
   m_win.height = static_cast<int>( _h * devicePixelRatio() );
 }
 
+const std::string_view ParticleShader="ParticleShader";
+//give this shader a name
+
 
 void NGLScene::initializeGL()
 {
@@ -41,7 +44,7 @@ void NGLScene::initializeGL()
   glEnable(GL_DEPTH_TEST);
   // enable multisampling for smoother drawing
   glEnable(GL_MULTISAMPLE);
-  m_emitter=std::make_unique<Emitter>(1000);//envoke the constructor of emitter and return a smart pointer,we don;t need to call the destructor.
+  m_emitter=std::make_unique<Emitter>(10000);//envoke the constructor of emitter and return a smart pointer,we don;t need to call the destructor.
   startTimer(10);//I don;t know what is it.
 
   //the basic color and shader
@@ -54,8 +57,14 @@ void NGLScene::initializeGL()
   //so that any subsequent rendering will use this transformation to determine the shape and size of the viewing frustum
   m_project=ngl::perspective(45.0f,1.0f,0.01f,50.0f);//a field of view angle, an aspect ratio, a near clipping plane distance, and a far clipping plane distance. 
   
+  //ngl::ShaderLib::setUniform("MVP",m_project*m_view);
+  ngl::ShaderLib::loadShader(ParticleShader,"shaders/ParticleVertex.glsl","shaders/ParticleFragment.glsl");
+  ngl::ShaderLib::use(ParticleShader);
+  //add shader first and then set up it
   ngl::ShaderLib::setUniform("MVP",m_project*m_view);
-  ngl::ShaderLib::setUniform("Colour",1.0f,0.0f,0.0f,1.0f);
+  //ngl::ShaderLib::setUniform("Colour",1.0f,0.0f,0.0f,1.0f);
+
+
   glPointSize(2);
 }
 
