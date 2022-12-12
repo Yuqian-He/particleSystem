@@ -10,7 +10,7 @@ moc/
 moc_*
 ui_*
 # shadow build directories
-build-*
+build*
 .vscode/
 Makefile
 # Compiled Dynamic libraries
