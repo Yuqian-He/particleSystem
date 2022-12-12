@@ -29,7 +29,7 @@ Makefile
 *.sln
 *.user
 *.filters
-.vscode
+*.vscode
 
 # Executables
 *.exe
