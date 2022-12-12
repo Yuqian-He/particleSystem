@@ -3,6 +3,8 @@
 #include <ngl/Random.h>
 #include<fstream>
 #include<sstream>
+#include<ngl/VAOFactory.h>
+#include<ngl/SimpleVAO.h>
 
 //this function I don't know.: change the random function to Emitter
 ngl::Vec3 randomVectorOnSphere(float _radius=1)
@@ -37,11 +39,16 @@ Emitter::Emitter(size_t _numParticle)
         createParticle(p);
     }
 
+/*
     //set up opengl buffers
     //this is a state object
     glGenVertexArrays(1,&m_vao);//we want 1 vertex array, store in memory address in m_vao
     glGenBuffers(1,&m_buffer);
     std::cout<<m_vao<<' '<<m_buffer<<'\n';
+*/
+
+    m_vao=ngl::VAOFactory::createVAO(ngl::simpleVAO,GL_POINTS);
+
 }
 
 size_t Emitter::numParticles() const
@@ -69,6 +76,7 @@ void Emitter::update()
 
 void Emitter::render() const
 {
+/*
     //std::cout<<"render\n";
     //we need to go through and pass our particle date to opengl
     //opengl can only bind one thing at a time
@@ -95,5 +103,16 @@ void Emitter::render() const
     glDrawArrays(GL_POINTS,0,m_particles.size());
     //disable
     glBindVertexArray(0);
+*/
+    glPointSize(4);
+    m_vao->bind();
+    m_vao->setData(ngl::SimpleVAO::VertexData(m_particles.size()*sizeof(Particle), m_particles[0].position.m_x));
+    m_vao->setVertexAttributePointer(0,3,GL_FLOAT,sizeof(Particle),0);
+    m_vao->setVertexAttributePointer(1,3,GL_FLOAT,sizeof(Particle),3);//why this use 3
+
+    m_vao->setNumIndices(m_particles.size());
+    m_vao->draw();
+    m_vao->unbind();
+
 
 }

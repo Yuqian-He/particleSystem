@@ -24,15 +24,16 @@ class Emitter
     //size_t number;
     std::vector<Particle> m_particles;
     
+    /*
     GLuint m_vao;//is the opengl unsigned integer,vao is the vertex array object,container hold multiple buffers
     //this container members where they are, how they are.
     GLuint m_buffer;//buffer to store all of the date to render,those buffer will be placed on GPU
 
     //try to generate a buffer data
     //very simple render pipline
-    
+    */
 
-   //std::unique_ptr<ngl::AbstractVAO> m_vao;
+    std::unique_ptr<ngl::AbstractVAO> m_vao; //create a series of VAO
 };
 
 #endif
