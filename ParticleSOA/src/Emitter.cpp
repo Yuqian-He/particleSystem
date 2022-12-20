@@ -4,7 +4,7 @@
 #include<fstream>
 #include<sstream>
 #include<ngl/VAOFactory.h>
-#include<ngl/SimpleVAO.h>
+#include<ngl/MultiBufferVAO.h>
 
 //this function I don't know.: change the random function to Emitter
 ngl::Vec3 randomVectorOnSphere(float _radius=1)
@@ -20,28 +20,30 @@ ngl::Vec3 randomVectorOnSphere(float _radius=1)
 					);
 }
 
-void Emitter::createParticle(Particle &io_p)
+void Emitter::createParticle(size_t _index)
 {
     ngl::Vec3 emitDir(0,10.0f,0);
 
-    io_p.position.set(0.0f,0.0f,0.0f);
-    io_p.direction=emitDir * ngl::Random::randomPositiveNumber()+ randomVectorOnSphere()*10;//video 1:12 don't understand
-    io_p.direction.m_y=std::abs(io_p.direction.m_y);//I don't know why use m_y,check ngl folder
-    io_p.colour=ngl::Random::getRandomColour3();
-    io_p.lifetime=ngl::Random::getIntFromGeneratorName("particleLife");
-    io_p.scale=ngl::Random::getIntFromGeneratorName("particleScale");
+    m_positions[_index].set(0,0,0);
+    m_directions[_index]=emitDir * ngl::Random::randomPositiveNumber()+ randomVectorOnSphere()*10;//video 1:12 don't understand
+    m_directions[_index].m_y=std::abs(m_directions[_index].m_y);//I don't know why use m_y,check ngl folder
+    m_colours[_index]=ngl::Random::getRandomColour3();
+    m_lifetimes[_index]=ngl::Random::getIntFromGeneratorName("particleLife");
+    m_scales[_index]=ngl::Random::getIntFromGeneratorName("particleScale");
 
 }
 
 Emitter::Emitter(size_t _numParticle)
 {
-    m_particles.resize(_numParticle);
-    
-    for(auto &p : m_particles) //auto create copy but we want to change the original one so we use &
-    {
-        createParticle(p);
-    }
-
+   m_positions.resize(_numParticle);
+   m_colours.resize(_numParticle);
+   m_directions.resize(_numParticle);
+   m_lifetimes.resize(_numParticle);
+   m_scales.resize(_numParticle);
+   for(auto i=0; i<_numParticle; ++i)
+   {
+       createParticle(i);
+   }
 /*
     //set up opengl buffers
     //this is a state object
@@ -50,28 +52,37 @@ Emitter::Emitter(size_t _numParticle)
     std::cout<<m_vao<<' '<<m_buffer<<'\n';
 */
 
-    m_vao=ngl::VAOFactory::createVAO(ngl::simpleVAO,GL_POINTS);
+    m_vao=ngl::vaoFactoryCast<ngl::MultiBufferVAO>(ngl::VAOFactory::createVAO(ngl::multiBufferVAO,GL_POINTS));
+    m_vao->bind();
+    //buffer 0 is position data
+    m_vao->setData(ngl::MultiBufferVAO::VertexData(m_positions.size()*sizeof(ngl::Vec3),m_positions[0].m_x));
+    m_vao->setVertexAttributePointer(0,3,GL_FLOAT,0,0);
+
+    //buffer 1 is colour data
+    m_vao->setData(ngl::MultiBufferVAO::VertexData(m_colours.size()*sizeof(ngl::Vec3),m_colours[0].m_x));
+    m_vao->setVertexAttributePointer(1,3,GL_FLOAT,0,0);
+    m_vao->setNumIndices(m_positions.size());
+    m_vao->unbind();
 
 }
 
 size_t Emitter::numParticles() const
 {
-    return m_particles.size();
+    return m_positions.size();
 }
 
 void Emitter::update()
 {
     float _dt=0.01;
     ngl::Vec3 gravity(0,-9.81f,0);
-    for(auto &p:m_particles)
+    for(size_t i=0; i<m_positions.size(); ++i)
     {
-        //direction=velocity
-        p.direction+=gravity*_dt*0.5f; //formula: dt_s=1/2*gravity*(dt_t)^2
-        p.position+=p.direction*_dt;
-        p.scale+=0.001f;
-        if(p.direction.m_y<=0.0f || --p.lifetime<=0)
+        m_directions[i]+=gravity*_dt*0.5f; //formula: dt_s=1/2*gravity*(dt_t)^2
+        m_positions[i]+=m_directions[i]*_dt;
+        m_scales[i]+=0.001f;
+        if(m_directions[i].m_y<=0.0f || --m_lifetimes[i]<=0)
         {
-            createParticle(p);
+            createParticle(i);
         }
     }
 
@@ -109,12 +120,11 @@ void Emitter::render() const
 */
     glPointSize(4);
     m_vao->bind();
-    m_vao->setData(ngl::SimpleVAO::VertexData(m_particles.size()*sizeof(Particle), m_particles[0].position.m_x));
-    m_vao->setVertexAttributePointer(0,3,GL_FLOAT,sizeof(Particle),0);
-    m_vao->setVertexAttributePointer(1,3,GL_FLOAT,sizeof(Particle),3);//why this use 3
-    m_vao->setVertexAttributePointer(2,1,GL_FLOAT,sizeof(Particle),9);
-
-    m_vao->setNumIndices(m_particles.size());
+    m_vao->setData(0,ngl::MultiBufferVAO::VertexData(m_positions.size()*sizeof(ngl::Vec3), m_positions[0].m_x));
+    //m_vao->setVertexAttributePointer(0,3,GL_FLOAT,sizeof(ngl::Vec3),0);
+    //m_vao->setVertexAttributePointer(1,3,GL_FLOAT,sizeof(Particle),3);//why this use 3
+    //m_vao->setVertexAttributePointer(2,1,GL_FLOAT,sizeof(Particle),9);
+    //m_vao->setNumIndices(m_positions.size());
     m_vao->draw();
     m_vao->unbind();
 
